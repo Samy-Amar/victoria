@@ -1,16 +1,22 @@
 import re as regexp # Importing as regexp because "re" also sounds like "recognition"
+from time.resolver import TimeResolver
 
 class CommandResolver():
   def response_from_speech(self, speech):
     if self.matches_name_command(speech):
       return self.name_answer(speech)
+
+    time_resolver = TimeResolver()
+    if time_resolver.matches_time_command(speech):
+      return time_resolver.time_answer(speech)
+
     return self.command_not_found(speech)
 
   def matches_name_command(self, speech):
-    return regexp.search('.*my name is.*', speech) != None
+    return 'my name is' in speech
 
   def name_answer(self, speech):
-    name = regexp.search(".*my name is (\w+)", speech).group(1)
+    name = regexp.search(r'.*my name is (\w+)', speech).group(1)
     return 'hello ' + name + ', my name is Victoria'
 
   def command_not_found(self, speech):
