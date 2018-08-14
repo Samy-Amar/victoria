@@ -6,7 +6,7 @@ class TimeResolver():
   time_format = '%l %M %p'
   def matches_time_command(self, speech):
     speech = speech.lower()
-    return 'what time' in speech and 'kitty' not in speech
+    return 'what time' in speech
 
   def time_answer(self, speech):
     current_local_time = datetime.now()

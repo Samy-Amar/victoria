@@ -6,7 +6,7 @@ mic = speech_recognition.Microphone()
 
 class SpeechRecognizer:
   # Accepts google or sphinx
-  current_recognition_software = 'google'
+  current_recognition_software = 'sphinx'
 
   def get_audio_from_mic(self):
     with mic as source:
